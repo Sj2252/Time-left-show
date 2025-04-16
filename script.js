@@ -59,8 +59,6 @@ function updateCountdown() {
 
 startStopBtn.addEventListener('click', () => {
   if (!isRunning) {
-    startStopBtn.classList.add('moved'); // Move the button up when started
-
     const [hour, minute] = timeInput.value.split(':');
     targetHour = parseInt(hour);
     targetMinute = parseInt(minute);
@@ -88,7 +86,6 @@ startStopBtn.addEventListener('click', () => {
     isRunning = true;
 
   } else {
-    startStopBtn.classList.remove('moved'); // Reset position when stopped
     clearInterval(countdownInterval);
     if (vibrationInterval) clearInterval(vibrationInterval);
     navigator.vibrate(0);
@@ -106,13 +103,11 @@ document.getElementById('fullscreenCheckbox').addEventListener('change', (e) => 
   if (e.target.checked) {
     if (docElm.requestFullscreen) {
       docElm.requestFullscreen();
-      startStopBtn.classList.add('moved'); 
 
     }
   } else {
     if (document.fullscreenElement && document.exitFullscreen) {
       document.exitFullscreen();
-      startStopBtn.classList.remove('moved');
     }
   }
 });
