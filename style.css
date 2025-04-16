@@ -92,14 +92,6 @@ body {
 #startStopBtn:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
-#startStopBtn.moved {
-  transform: translateY(-30px); /* Moves the button up */
-}
-
-#startStopBtn.moved {
-  transform: translateY(150px); /* Moves the button up */
-}
-/* ---------- Fullscreen Toggle (From Uiverse.io by catraco) ---------- */
 .container {
   --color: #a5a5b0;
   --size: 30px;
