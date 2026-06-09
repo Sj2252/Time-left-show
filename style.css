@@ -157,13 +157,32 @@ body {
   text-align: left;
 }
 
-/* ---------- Mobile Responsive Styles ---------- */
-@media (max-width: 600px) {
-  #current-time {
-    font-size: 2rem;
-    margin-left: 0;
+/* ---------- Responsive Styles ---------- */
+@media (max-width: 1200px) {
+  .countdown {
+    font-size: 11rem;
   }
 }
+
+@media (max-width: 900px) {
+  .countdown {
+    font-size: 8rem;
+  }
+  #current-time {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 2rem;
+  }
+  
+  .countdown {
+    font-size: 4.5rem;
+    margin-top: 3rem;
+  }
+
   #current-time {
     font-size: 2rem;
     margin-left: 0;
@@ -178,13 +197,15 @@ body {
     padding: 10px 20px;
   }
 
-  .button-wrapper {
-    flex-direction: column;
-    gap: 10px;
-  }
-
   .container {
     --size: 24px;
     bottom: 15px;
     left: 10px;
   }
+}
+
+@media (max-width: 400px) {
+  .countdown {
+    font-size: 3.2rem;
+  }
+}
