@@ -71,8 +71,12 @@ startStopBtn.addEventListener('click', () => {
     endTime.setHours(targetHour, targetMinute, 0, 0);
 
     if (endTime <= now) {
-      alert("Selected time already passed today!");
-      return;
+      const confirmNextDay = confirm("Selected time has already passed today. Do you want to set the timer for tomorrow instead?");
+      if (confirmNextDay) {
+        endTime.setDate(endTime.getDate() + 1);
+      } else {
+        return;
+      }
     }
 
     totalDuration = endTime - now;
@@ -140,7 +144,11 @@ document.addEventListener('visibilitychange', () => {
 requestWakeLock();
 document.addEventListener('fullscreenchange', () => {
   const checkbox = document.getElementById('fullscreenCheckbox');
-  if (!document.fullscreenElement) {
+  if (document.fullscreenElement) {
+    document.body.classList.add('fullscreen-active');
+    checkbox.checked = true;
+  } else {
+    document.body.classList.remove('fullscreen-active');
     checkbox.checked = false;
   }
 });
@@ -156,17 +164,3 @@ function updateCurrentTime() {
 
 setInterval(updateCurrentTime, 1000); // update every second
 updateCurrentTime(); // initial call
-// Fullscreen toggle logic
-const fullscreenToggle = document.getElementById('fullscreenToggle');
-
-fullscreenToggle.addEventListener('change', () => {
-  if (fullscreenToggle.checked) {
-    if (document.documentElement.requestFullscreen) {
-      document.documentElement.requestFullscreen();
-    }
-  } else {
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    }
-  }
-});
