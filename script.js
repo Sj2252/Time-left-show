@@ -64,7 +64,7 @@ startStopBtn.addEventListener('click', () => {
     targetMinute = parseInt(minute);
 
     const now = new Date();
-    const startTimeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const startTimeStr = formatTime(now);
     startTimeDisplay.textContent = `${startTimeStr}`;
 
     endTime = new Date();
@@ -152,13 +152,19 @@ document.addEventListener('fullscreenchange', () => {
     checkbox.checked = false;
   }
 });
+function formatTime(date) {
+  let hours = date.getHours();
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12;
+  hours = hours ? hours : 12; // Convert 0 to 12
+  const hoursStr = String(hours).padStart(2, '0');
+  return `${hoursStr}:${minutes} ${ampm}`;
+}
+
 function updateCurrentTime() {
   const now = new Date();
-  const currentTimeStr = now.toLocaleTimeString([], { 
-    hour: '2-digit', 
-    minute: '2-digit',
-    hour12: true // Force 12-hour format with AM/PM
-  });
+  const currentTimeStr = formatTime(now);
   document.getElementById('current-time').textContent = `${currentTimeStr}`;
 }
 
