@@ -272,3 +272,25 @@ body {
   left: 3vw;
   font-size: min(3vw, 2.5vh);
 }
+
+/* ---------- Version Tag ---------- */
+#version-tag {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.4);
+  z-index: 1000;
+  transition: opacity 1s ease;
+  pointer-events: none;
+}
+
+.version-hidden {
+  opacity: 0 !important;
+}
+
+.fullscreen-active #version-tag {
+  bottom: 3vh;
+  right: 3vw;
+  font-size: min(2.5vw, 2vh);
+}

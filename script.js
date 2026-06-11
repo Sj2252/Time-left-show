@@ -170,3 +170,11 @@ function updateCurrentTime() {
 
 setInterval(updateCurrentTime, 1000); // update every second
 updateCurrentTime(); // initial call
+
+// Hide version tag after 10 seconds
+setTimeout(() => {
+  const versionTag = document.getElementById('version-tag');
+  if (versionTag) {
+    versionTag.classList.add('version-hidden');
+  }
+}, 10000);
